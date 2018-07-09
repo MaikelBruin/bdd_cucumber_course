@@ -1,8 +1,8 @@
 package providedTestCases;
 
 //import org.junit.After;
-import org.junit.Assert;
 //import org.junit.Before;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,16 +17,16 @@ public class AddProductToCartConfirmationTest {
     private WebDriverWait myWaitVar;
 
 //    @Before
-    public void setUp(){
-        ChromeDriverManager.getInstance().setup();
-        driver = new ChromeDriver();
-        myWaitVar = new WebDriverWait(driver,20);
-    }
+//    public void setUp(){
+//        ChromeDriverManager.getInstance().setup();
+//        driver = new ChromeDriver();
+//        myWaitVar = new WebDriverWait(driver,20);
+//    }
 
 //    @After
-    public void tearDown(){
-        driver.quit();
-    }
+//    public void tearDown(){
+//        driver.quit();
+//    }
 
     @Test
     public void addProductToCartConfirmation(){
