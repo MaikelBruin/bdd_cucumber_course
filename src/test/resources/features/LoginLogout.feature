@@ -1,3 +1,4 @@
+@smoke
 Feature: Login and Logout
   As a user
   I want to be able to login and logout

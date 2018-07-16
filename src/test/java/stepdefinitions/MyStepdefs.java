@@ -151,13 +151,13 @@ public class MyStepdefs {
     }
 
     @Then("^I should see whether the email is \"([^\"]*)\"$")
-    public void i_should_see_whether_the_email_is(String valid) {
-        String isValid = "invalid";
+    public void i_should_see_whether_the_email_is(String expectedValidity) {
+        String actualValidity = "invalid";
         AuthenticationPage authenticationPage = new AuthenticationPage(driver);
         if (authenticationPage.isNewUserMailValid()) {
-            isValid = "valid";
+            actualValidity = "valid";
         }
-        Assert.assertEquals(valid, isValid);
+        Assert.assertEquals(expectedValidity, actualValidity);
     }
 
 }

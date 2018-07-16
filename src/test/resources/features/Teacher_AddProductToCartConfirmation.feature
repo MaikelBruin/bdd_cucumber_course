@@ -1,3 +1,4 @@
+@smoke
 Feature: Receive confirmation when adding to cart
 
   As user of the webshop
