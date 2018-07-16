@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -9,11 +10,16 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.AuthenticationPage;
 import pages.HomePage;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MyStepdefs {
 
@@ -158,6 +164,28 @@ public class MyStepdefs {
             actualValidity = "valid";
         }
         Assert.assertEquals(expectedValidity, actualValidity);
+    }
+
+    @Then("^the product tags should be visible$")
+    public void the_product_tags_should_be_visible(DataTable table) {
+        // Write code here that turns the phrase above into concrete actions
+        // For automatic transformation, change DataTable to one of
+        // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
+        // E,K,V must be a scalar (String, Integer, Date, enum etc).
+        // Field names for YourType must match the column names in
+        // your feature file (except for spaces and capitalization).
+        List<String> tagList = table.asList(String.class);
+        List<WebElement> elementList = driver.findElements(By.cssSelector("[class*='tag_level']"));
+        List<String> actualTagList = new ArrayList<>();
+        for (WebElement element : elementList) {
+            actualTagList.add(element.getText());
+        }
+
+        for (String tag : tagList) {
+            int i = 0;
+            Assert.assertEquals(actualTagList.get(i), tagList.get(i));
+            i++;
+        }
     }
 
 }

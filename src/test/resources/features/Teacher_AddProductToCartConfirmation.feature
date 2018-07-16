@@ -5,6 +5,7 @@ Feature: Receive confirmation when adding to cart
   I would like to see a confirmation when I add products to my shopping cart
   So that I know that I added the right product
 
+  @ui
   Scenario: Receive confirmation when adding products to the shopping cart
     Given   I am on the Polteq Webshop
     When    I go to the IPODS page
