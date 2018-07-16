@@ -7,4 +7,4 @@ Feature: Homepage tags
   Scenario: All tags are visible
     Given I am on the Polteq Webshop
     Then the product tags should be visible
-    |ipod|apple|ethereum|bitcoin|cryptocurrency|iphone 4s|shufle|Ipod touch|superdrive|nano|
+    |ipod|apple|ethereum|bitcoin|cryptocurrency|iphone 4s|shuffle|Ipod touch|superdrive|nano|

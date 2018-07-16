@@ -168,23 +168,18 @@ public class MyStepdefs {
 
     @Then("^the product tags should be visible$")
     public void the_product_tags_should_be_visible(DataTable table) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
-        // E,K,V must be a scalar (String, Integer, Date, enum etc).
-        // Field names for YourType must match the column names in
-        // your feature file (except for spaces and capitalization).
         List<String> tagList = table.asList(String.class);
+        System.out.println(tagList);
         List<WebElement> elementList = driver.findElements(By.cssSelector("[class*='tag_level']"));
         List<String> actualTagList = new ArrayList<>();
+
         for (WebElement element : elementList) {
             actualTagList.add(element.getText());
         }
+        System.out.println(actualTagList);
 
         for (String tag : tagList) {
-            int i = 0;
-            Assert.assertEquals(actualTagList.get(i), tagList.get(i));
-            i++;
+            Assert.assertTrue(actualTagList.contains(tag));
         }
     }
 
