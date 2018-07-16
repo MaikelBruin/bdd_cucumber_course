@@ -33,6 +33,8 @@ public class HomePage {
 
     By accountDetailsButton = By.cssSelector("[class='account']");
 
+    private By userInfo = By.className("header_user_info");
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
 
@@ -46,7 +48,6 @@ public class HomePage {
 
     public void clickLogIn(){
         logInButton.click();
-
     }
 
     public void goToHomePage(){
@@ -80,5 +81,9 @@ public class HomePage {
     public void searchProduct(String searchInput){
         searchField.sendKeys(searchInput);
         submitSearch.click();
+    }
+
+    public String getUserInfo() {
+        return driver.findElement(userInfo).getText();
     }
 }

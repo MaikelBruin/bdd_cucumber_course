@@ -70,5 +70,6 @@ public class AuthenticationPage{
       passwordTextfield.sendKeys(password);
       loginButton.click();
     }
+
 }
 
