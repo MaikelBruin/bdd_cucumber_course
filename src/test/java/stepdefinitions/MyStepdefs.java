@@ -6,9 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,27 +18,11 @@ public class MyStepdefs {
     private WebDriver driver;
     private WebDriverWait myWaitVar;
 
-//    @Before
-//    public void setUp(){
-//        ChromeDriverManager.getInstance().setup();
-//        driver = new ChromeDriver();
-//        myWaitVar = new WebDriverWait(driver,20);
-//    }
-
-//    @After
-//    public void tearDown(){
-//        driver.quit();
-//    }
 
     @Given("^I am on the Polteq Webshop$")
     public void iAmOnThePolteqWebshop()  {
         // Write code here that turns the phrase above into concrete actions
-        ChromeDriverManager.getInstance().setup();
-        driver = new ChromeDriver();
-        myWaitVar = new WebDriverWait(driver,20);
-        driver.switchTo();
         driver.get("https://techblog.polteq.com/testshop/index.php");
-        driver.manage().window().maximize();
     }
 
     @And("^The homepage displays products$")
@@ -54,9 +36,8 @@ public class MyStepdefs {
 
 
     @Then("^I can see the add to cart button for each product$")
-    public void iCanSeeTheAddToCartButtonForEachProduct() throws Throwable {
+    public void iCanSeeTheAddToCartButtonForEachProduct()   {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
     }
 
 
@@ -77,14 +58,12 @@ public class MyStepdefs {
     @And("^I add the iPod Nano to the cart$")
     public void iAddTheIPodNanoToTheCart() {
         // Write code here that turns the phrase above into concrete actions
-        //Add to cart
         driver.findElement(By.id("add_to_cart")).click();
     }
 
 
     @Then("^I get a confirmation that the product is added to the shopping cart$")
     public void iGetAConfirmationThatTheProductIsAddedToTheShoppingCart() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("i.icon-check")));
         Assert.assertTrue("Check if empty element is visible",
                 driver.findElement(By.cssSelector("i.icon-check")).isDisplayed());
@@ -92,7 +71,6 @@ public class MyStepdefs {
 
     @Then("^I should not be taken directly to my shopping cart$")
     public void i_should_not_be_taken_directly_to_my_shopping_cart() {
-        // Write code here that turns the phrase above into concrete actions
         myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[title='Proceed to checkout']")));
         Assert.assertTrue("Check if the button to be taken to the checkout is shown",
                 driver.findElement(By.cssSelector("a[title='Proceed to checkout']")).isDisplayed());
