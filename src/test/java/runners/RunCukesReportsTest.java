@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/",
         glue = "stepdefinitions",
         tags = "@smoke",
-        plugin = {"html:target/cucumber"})
-public class RunCukesTest {
+        plugin = {"pretty", "html:target/cucumber/html" , "junit:target/cucumber/junit/report.xml"})
+public class RunCukesReportsTest {
 
 }

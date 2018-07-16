@@ -18,7 +18,7 @@ Feature: Login and Logout
 #    Then I should see my user name "Maikel Bruin" in the header
 
 
-  Scenario Outline: Create new account
+  Scenario Outline: Create new account with email "<email>"
     Given I am on the Polteq Webshop
     And I am on the authentication page
     When I create a new account with email "<email>"
