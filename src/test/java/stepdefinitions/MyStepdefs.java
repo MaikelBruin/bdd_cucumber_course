@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -9,11 +10,16 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.AuthenticationPage;
 import pages.HomePage;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MyStepdefs {
 
@@ -151,13 +157,30 @@ public class MyStepdefs {
     }
 
     @Then("^I should see whether the email is \"([^\"]*)\"$")
-    public void i_should_see_whether_the_email_is(String valid) {
-        String isValid = "invalid";
+    public void i_should_see_whether_the_email_is(String expectedValidity) {
+        String actualValidity = "invalid";
         AuthenticationPage authenticationPage = new AuthenticationPage(driver);
         if (authenticationPage.isNewUserMailValid()) {
-            isValid = "valid";
+            actualValidity = "valid";
         }
-        Assert.assertEquals(valid, isValid);
+        Assert.assertEquals(expectedValidity, actualValidity);
+    }
+
+    @Then("^the product tags should be visible$")
+    public void the_product_tags_should_be_visible(DataTable table) {
+        List<String> tagList = table.asList(String.class);
+        System.out.println(tagList);
+        List<WebElement> elementList = driver.findElements(By.cssSelector("[class*='tag_level']"));
+        List<String> actualTagList = new ArrayList<>();
+
+        for (WebElement element : elementList) {
+            actualTagList.add(element.getText());
+        }
+        System.out.println(actualTagList);
+
+        for (String tag : tagList) {
+            Assert.assertTrue(actualTagList.contains(tag));
+        }
     }
 
 }

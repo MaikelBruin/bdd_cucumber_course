@@ -1,3 +1,4 @@
+@ignore
 Feature: Show stock level of product
 
   As user of the webshop

@@ -1,3 +1,4 @@
+@ignore
 Feature: Add a product to shopping cart
   As a user
   I want to receive a confirmation banner when I add a product to my cart
